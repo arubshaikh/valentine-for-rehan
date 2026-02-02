@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Rehan, Important Question</title>
+<title>Rehan, this is serious</title>
+
 <style>
     body {
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        height: 100vh;
         margin: 0;
-        font-family: 'Comic Sans MS', cursive, sans-serif;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -18,16 +19,21 @@
 
     .card {
         background: white;
-        padding: 45px;
+        padding: 40px;
         border-radius: 20px;
-        box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+        width: 360px;
         position: relative;
-        width: 320px;
     }
 
     h1 {
-        font-size: 26px;
         color: #ff4d6d;
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 15px;
+        color: #555;
         margin-bottom: 40px;
     }
 
@@ -45,47 +51,88 @@
         background-color: #ff4d6d;
         color: white;
         left: 20%;
-        top: 65%;
+        top: 70%;
     }
 
     #noBtn {
-        background-color: #888;
+        background-color: #999;
         color: white;
         left: 55%;
-        top: 65%;
+        top: 70%;
     }
 
     #message {
-        margin-top: 30px;
+        margin-top: 20px;
         font-size: 20px;
-        color: #333;
         display: none;
+    }
+
+    #photo {
+        width: 100%;
+        border-radius: 15px;
+        margin-top: 20px;
+        display: none;
+    }
+
+    #talk {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        font-size: 14px;
+        color: #777;
     }
 </style>
 </head>
+
 <body>
 
 <div class="card">
-    <h1>Rehan… will you be my Valentine? ❤️</h1>
+    <h1>Rehan, will you be my Valentine? ❤️</h1>
+    <p>Choose wisely. Your future depends on this decision.</p>
+
     <button id="yesBtn">Yes 😍</button>
     <button id="noBtn">No 😈</button>
-    <div id="message">Hehe. I knew it, Rehan. Valentine’s plan officially locked. 💘</div>
+
+    <div id="message">
+        <p>I knew it 😌 Valentine’s Day is officially booked. You have no escape now 💘</p>
+        <img id="photo" src="us.jpg">
+    </div>
+
+    <div id="talk">Try pressing No. I dare you.</div>
 </div>
 
 <script>
     const noBtn = document.getElementById('noBtn');
     const yesBtn = document.getElementById('yesBtn');
     const message = document.getElementById('message');
+    const photo = document.getElementById('photo');
+    const talk = document.getElementById('talk');
+
+    const noMessages = [
+        "Rehan… why are you like this?",
+        "That button is not for you.",
+        "You really thought you could press No? 😂",
+        "Be serious for once.",
+        "Your finger slipped. Try again.",
+        "You’re embarrassing yourself now."
+    ];
 
     noBtn.addEventListener('mouseover', () => {
         const x = Math.floor(Math.random() * (window.innerWidth - 120));
         const y = Math.floor(Math.random() * (window.innerHeight - 60));
         noBtn.style.left = x + 'px';
         noBtn.style.top = y + 'px';
+
+        talk.innerText = noMessages[Math.floor(Math.random() * noMessages.length)];
     });
 
     yesBtn.addEventListener('click', () => {
         message.style.display = 'block';
+        photo.style.display = 'block';
+        talk.innerText = "Smartest decision you’ve made all year.";
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+        document.body.style.background = "#ff4d6d";
     });
 </script>
 
